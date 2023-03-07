@@ -5,7 +5,7 @@ output_message1 = "возможно семь бед один ответ"
 input_message2 = "дасрк мтане мрмшо птеуи удише оаа"
 output_message2 = "да один пашет семеро руками машут"
 
-input_message1 = input_message3.replace(" ", "")
+input_message1 = input_message2.replace(" ", "")
 print(len(input_message1))
 letter_list1 = []
 for letter in input_message1:
