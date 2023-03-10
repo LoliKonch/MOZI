@@ -12,7 +12,7 @@ matrix_scheme = np.array([[0, 0, 1, 0, 0, 0],
                           [0, 1, 0, 1, 0, 0],
                           [0, 0, 1, 0, 0, 1]])
 
-table = [['' for k in range(6)] for i in  range(6)]
+table = [[' ' for k in range(6)] for i in  range(6)]
 
 def write_and_traspose(matrix_scheme, counter, table):
     for i in range(6):
@@ -24,6 +24,12 @@ def write_and_traspose(matrix_scheme, counter, table):
     trasposed_matrix = matrix_scheme.transpose()
     for i in range(6):
         trasposed_matrix[i] = np.flip(trasposed_matrix[i])
+
+    for i in range(6):
+        for j in range(6):
+            print(table[i][j], end='')
+        print("")
+    print("\n")
 
     return trasposed_matrix, counter, table
 
