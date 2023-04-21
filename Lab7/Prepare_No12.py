@@ -14,7 +14,7 @@ def generateNumber(studentNumber):
             numberList1.append(i)
 
     for i in range(number - 20, number + 20):
-        if i % 3 != 0 and i % 5 != 0 and i % 7 != 0 and not i in numberList1:
+        if i % 2 != 0 and i % 3 != 0 and i % 5 != 0 and i % 7 != 0 and not i in numberList1:
             numberList2.append(i)
 
     return numberList1[0], numberList1[1], numberList2[0], numberList2[1]
