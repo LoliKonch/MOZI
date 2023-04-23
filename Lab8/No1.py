@@ -24,8 +24,6 @@ for n in Prepare_No12.throwMeSomeNumbers():
             if  x == 1 or x == n - 1:
                 flag = True
                 break
-            else:
-                flag = False
         if not flag:
             break
 
