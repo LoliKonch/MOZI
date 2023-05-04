@@ -33,7 +33,6 @@ def polyDiv(n1, n2):
         else:
             break
 
-
     for i in n2:
         ndiv[7 - i] = 1
     for i in range(8):
@@ -45,11 +44,23 @@ def polyDiv(n1, n2):
     return np.polydiv(n, ndiv)
 
 
-def glue():
-
+def magikGlue(i, k):
+    strin = ''
+    chto, kto = polyDiv(polyMult(polyPerf(i), polyPerf(k)), [4, 1, 0])
+    kto = list(kto)
+    for i in range(len(kto)):
+        if i == 0:
+            kto[i] = 0
+        else:
+            kto[i] = 1
+    for el in kto:
+        strin += str(el)
+    kto = int(strin, base=2)
+    return kto
 
 
 table = [['' for k in range(17)] for i in range(17)]
+table[0][0] = 0
 
 for i in range(17):
     if i > 0:
@@ -61,9 +72,8 @@ for i in range(17):
 
 for i in range(1, 17):
     for k in range(1, 17):
-        table[i][k] = int(polyDiv(polyMult(polyPerf(i), polyPerf(k)), [4, 1, 0])[0][0])
+        table[i][k] = magikGlue(i, k)
 
-print(polyDiv(polyMult(polyPerf(6), polyPerf(8)), [3, 1, 0]))
 print(np.matrix(table))
 
 
