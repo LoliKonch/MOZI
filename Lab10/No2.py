@@ -32,7 +32,7 @@ def findSimp (stNum):
         if len(listk1) == 2 and len(listk3) == 2:
                 break
 
-    return listk1[0], listk1[1], listk3[0], listk3[1],
+    return listk1[0], listk1[1], listk3[0], listk3[1]
 
 
 def legendre(a, p):
