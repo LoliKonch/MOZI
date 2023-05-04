@@ -2,7 +2,7 @@ import numpy as np
 
 
 def polyPerf(n):
-    n = bin(n)[2:]
+    n = bin(n - 1)[2:]
     n = ('0' * (4 - len(n))) + n
     n = list(n)
     return n
@@ -72,7 +72,10 @@ for i in range(17):
 
 for i in range(1, 17):
     for k in range(1, 17):
-        table[i][k] = magikGlue(i, k)
+        if i == 1 or k ==1:
+            table[i][k] = 0
+        else:
+            table[i][k] = magikGlue(i, k)
 
 print(np.matrix(table))
 
