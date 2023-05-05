@@ -82,7 +82,7 @@ for i in range(1, N + 1):
 
 
 
-#print(polyDiv(polyMult(polyPerf(5), polyPerf(7)), [3, 1, 0]))
+#print(polyDiv(polyMult(polyPerf(5 + 1), polyPerf(7 + 1)), [3, 1, 0]))
 #print(np.polydiv([1, 1, 0, 1, 1], [1, 0, 1, 1]))
-#print(magikGlue(7, 5))
+#print(magikGlue(7 + 1, 5 + 1))
 print(np.matrix(table))
