@@ -45,7 +45,10 @@ def polyDiv(n1, n2):
 
 def magikGlue(i, k):
     tempString = ''
-    cel, ost = polyDiv(polyMult(polyPerf(i), polyPerf(k)), [4, 3, 0])
+    # тут в "polyDiv(polyMult(polyPerf(i), polyPerf(k)), [4, 1, 0])" часть [4, 1, 0] это представление полинома
+    # по которому необходимо привести  в данном случае я взял Х**4 + Х**1(просто Х) + Х**0(просто 1)
+    # и ты просто в этот список все степени Х из полинома переносишь и всё готово дальше само
+    cel, ost = polyDiv(polyMult(polyPerf(i), polyPerf(k)), [4, 1, 0])
     ost = list(ost)
     for i in range(len(ost)):
         if ost[i] == 0:
@@ -57,7 +60,7 @@ def magikGlue(i, k):
     ost= int(tempString, base=2)
     return ost
 
-
+# N - это размерность таблицы лучше бери степени двойки типо 4 8 16 и тд
 N = 16
 table = [['' for k in range(N + 1)] for i in range(N + 1)]
 table[0][0] = 0
