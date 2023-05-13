@@ -10,12 +10,12 @@ def polyPerf(n):
 def polyMult(n1, n2):
     preResult = []
     result = []
-    for i in range(len(n1) - 1, -1, -1):
-        for k in range(len(n2) - 1, -1, -1):
+    for i in range(len(n1)):
+        for k in range(len(n2)):
             if n1[i] == '1' and n2[k] == '1':
                 preResult.append(len(n1) + len(n2) - 2 - i - k)
 
-    for i in range(N + 1):
+    for i in range(N - 1):
         if preResult.count(i) % 2 == 1:
             result.append(i)
     return result
@@ -42,8 +42,16 @@ def polyDiv(n1, n2):
 
     return np.polydiv(n, ndiv)
 
+[1,0,0,0,1]
+def showPoly(ost):
+    for i in range(len(ost)):
+        if ost[i] == 1:
+            print(f'{"1" if len(ost) - i - 1 == 0 else f"x{dictExp[len(ost) - i - 1]}"}'
+                  f'{"+" if ost[i + 1:].count(1) != 0 else ""}', end='')
+    print('')
 
-def magikGlue(i, k):
+
+def magikGlue(i, k, choose):
     tempString = ''
     # тут в "polyDiv(polyMult(polyPerf(i), polyPerf(k)), [4, 1, 0])" часть [4, 1, 0] это представление полинома
     # по которому необходимо привести  в данном случае я взял Х**4 + Х**1(просто Х) + Х**0(просто 1)
@@ -51,17 +59,35 @@ def magikGlue(i, k):
     cel, ost = polyDiv(polyMult(polyPerf(i), polyPerf(k)), [4, 1, 0])
     ost = list(ost)
     for i in range(len(ost)):
-        if ost[i] == 0:
-            ost[i] = 0
-        else:
+        if ost[i] == 1 or ost[i] == -1:
             ost[i] = 1
+        else:
+            ost[i] = 0
+
+    if choose == k - 1:
+        showPoly(ost)
+
     for elem in ost:
         tempString += str(elem)
     ost= int(tempString, base=2)
     return ost
 
-# N - это размерность таблицы лучше бери степени двойки типо 4 8 16 и тд
+dictExp = {
+    0: "\u2070",
+    1: "\u00B9",
+    2: "\u00B2",
+    3: "\u00B3",
+    4: "\u2074",
+    5: "\u2075",
+    6: "\u2076",
+    7: "\u2077",
+    8: "\u2078",
+    9: "\u2079"
+    }
+# N - это размерность таблицы обязательно бери степени двойки типо 4 8 16 и тд
 N = 16
+# choose - это "элемент" из 3 столбца таблицы
+choose = 10
 table = [['' for k in range(N + 1)] for i in range(N + 1)]
 table[0][0] = 0
 
@@ -78,7 +104,7 @@ for i in range(1, N + 1):
         if i == 1 or k ==1:
             table[i][k] = 0
         else:
-            table[i][k] = magikGlue(i, k)
+            table[i][k] = magikGlue(i, k, choose)
 
 
 
