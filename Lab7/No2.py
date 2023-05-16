@@ -20,7 +20,7 @@ for n in th():
                 flag = False
 
     if flag:
-        print(n, "Прошло тест")
+        print(n, "Прошло тест, вероятность простоты ", 1 - 1 / 2 ** len(k))
     else:
         print(n, "Не прошло тест")
 

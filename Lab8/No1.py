@@ -30,6 +30,6 @@ for n in Prepare_No12.throwMeSomeNumbers():
 
 
     if flag:
-        print(n, "Прошло тест")
+        print(n, "Прошло тест, вероятность простоты ", 1 - 1 / 4 ** len(k))
     else:
         print(n, "Не прошло тест")
